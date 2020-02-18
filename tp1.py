@@ -1,43 +1,50 @@
 from sklearn import *
-import numpy as np
-import matplotlib.pyplot as mp
-
-def printCaracteristics(data):
-    lenI = len(data.data)
-    print('number of data = ',lenI )
-    print('names of variables')
-    for i in range(0, len(data.feature_names)):
-        print(data.feature_names[i])
-
-    print('names of classes')
-    for j in range(0, len(data.target_names)):
-        print(data.target_names[j])
-
-    print('label and classes')
-    for k in range(0, len(data.target)):
-        print(data.target_names[data.target[k]])
-
-def variables_average(data):
-    return data.data.mean(0)
-def data_average(data):
-    return data.data.mean(1)
-
-def variables_caracteristics(data):
-    mean = variables_average(data)
-    std = data.data.std(0)
-    min = data.data.min()
-    max = data.data.max()
-
-    print('mean = ', mean)
-    print('std = ',std)
-    print('min = ',min)
-    print('max = ',max)
+from numpy import *
+import matplotlib.pyplot as plt
+from sklearn.datasets.samples_generator import make_blobs
 
 
-if __name__ == '__main__':
-    iris = datasets.load_iris()
+iris=datasets.load_iris()
+data = iris.data
+feature_names=iris.feature_names
+#print (iris)
+#print (iris.data)
+#print (iris.target_names)
+#print(iris.target)
 
-    print(iris.data[0, :2])
-    #printCaracteristics(iris)
+#print (iris)
+#print (iris.feature_names)
+#print(iris.target_names)
 
-    #variables_caracteristics(iris)
+#print (iris)
+#print (iris.data)
+
+#for i in range(len(iris.data)) :
+   # print("la donnee ", iris.data[i], " de la classe ",iris.target_names[iris.target[i]])
+    
+#print(iris.data.mean(0))
+#print(iris.data.mean(1))
+
+#print(iris.target.size)
+
+#print(iris.data.mean(0))
+#print(data.min(0))
+#print(data.max(0))
+
+#print(data.std(0))
+
+#print(data.size)
+
+#print(data.shape)
+#print(size(feature_names))
+#print(size(iris.target_names))
+
+if __name__ == "__main__":
+    iris = sk.datasets.load_iris()
+    print(iris)
+    print("Number of data : ", len(iris.data))
+    print("Names of variables : ", ' ,'.join(str(e) for e in iris.feature_names) )
+    print("Names of classes : ", ' ,'.join(str(e) for e in iris.target_names) )
+    print("Objects and their classes")
+    print('\n'.join('object n°'+str(n)+"'s class is "+iris.target_names[iris.target[n]] for n,o in enumerate(iris.data)))
+
